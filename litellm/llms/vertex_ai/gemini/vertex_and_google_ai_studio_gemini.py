@@ -810,6 +810,8 @@ class VertexGeminiConfig(VertexAIBaseConfig, BaseConfig):
                     audio_tokens = detail["tokenCount"]
                 elif detail["modality"] == "TEXT":
                     text_tokens = detail["tokenCount"]
+                    if cached_tokens is not None:
+                        text_tokens -= cached_tokens
         if "thoughtsTokenCount" in completion_response["usageMetadata"]:
             reasoning_tokens = completion_response["usageMetadata"][
                 "thoughtsTokenCount"

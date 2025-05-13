@@ -800,6 +800,10 @@ class VertexGeminiConfig(VertexAIBaseConfig, BaseConfig):
             cached_tokens = completion_response["usageMetadata"][
                 "cachedContentTokenCount"
             ]
+        elif "cacheTokensDetails" in completion_response["usageMetadata"]:
+            for detail in completion_response["usageMetadata"]["cacheTokensDetails"]:
+                if detail["modality"] == "TEXT":
+                    cached_tokens = detail["tokenCount"]
         if "promptTokensDetails" in completion_response["usageMetadata"]:
             for detail in completion_response["usageMetadata"]["promptTokensDetails"]:
                 if detail["modality"] == "AUDIO":

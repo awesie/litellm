@@ -219,6 +219,7 @@ class UsageMetadata(TypedDict, total=False):
     totalTokenCount: int
     candidatesTokenCount: int
     cachedContentTokenCount: int
+    cacheTokensDetails: List[PromptTokensDetails]
     promptTokensDetails: List[PromptTokensDetails]
     thoughtsTokenCount: int
 
